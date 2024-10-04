@@ -1,4 +1,4 @@
-package Leetcode_searchingAlgorithms;
+package Leetcode_Arrays;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Leetcode_searchingAlgorithms;
+package Leetcode_Arrays;
 
 public class Leetcode_1295 {
     public static void main(String[] args) {
