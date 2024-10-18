@@ -16,11 +16,7 @@ public class Leetcode_9 {
             x = x / 10;
         }
 
-        if(orgNumber == reversedNumber){
-            return true;
-        }
-
-        return false;
+        return orgNumber == reversedNumber;
 
     }
 }

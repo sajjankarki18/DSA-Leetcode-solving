@@ -11,10 +11,6 @@ public class Leetcode_28 {
     public static int strStr(String haystack, String needle) {
         int index = haystack.indexOf(needle);
 
-        if(index != -1){
-            return index;
-        }
-
-        return -1;
+        return index;
     }
 }
