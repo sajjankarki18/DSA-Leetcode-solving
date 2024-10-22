@@ -1,15 +1,14 @@
-package Leetcode_sorting_algorithms;
+package Leetcode_sorting_algorithms.cycle_sort;
 
 import java.util.Arrays;
 
-public class cycle_sort {
+public class Leetcode_645 {
     public static void main(String[] args) {
-        int [] nums = {3, 2, 1, 5, 4};
+        int [] nums = {1,2,2,4};
 
-        cycle(nums);
-        System.out.println(Arrays.toString(nums));
+        System.out.println(Arrays.toString(findErrorNums(nums)));
     }
-    public static void cycle(int [] nums){
+    public static int [] findErrorNums(int [] nums){
         int index = 0;
 
         while (index < nums.length){
@@ -21,6 +20,14 @@ public class cycle_sort {
                 index++;
             }
         }
+
+        for(int i = 0;i<nums.length;i++){
+            if(nums[i] != i + 1){
+                return new int[]{i + 1, nums[i]};
+            }
+        }
+
+        return new int[]{-1, -1};
     }
 
     public static void swap(int [] nums, int first, int second){
