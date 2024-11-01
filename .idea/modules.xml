@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JAVA_OOPS/Java_oops.iml" filepath="$PROJECT_DIR$/JAVA_OOPS/Java_oops.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OOPS_JAVA/OOPS_JAVA.iml" filepath="$PROJECT_DIR$/OOPS_JAVA/OOPS_JAVA.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/java-DSA.iml" filepath="$PROJECT_DIR$/.idea/java-DSA.iml" />
     </modules>
   </component>
