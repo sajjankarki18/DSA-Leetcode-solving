@@ -1,25 +1,27 @@
 package ClassesAndObjects;
 
+
 //Create a class Book with properties like title, author, and price. Write methods to set and get these properties.
 // Then, create a Library class that holds a list of books and provides methods to add, remove, and display books.
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Question_1 {
     public static void main(String[] args) {
-        Book book1 = new Book("Game of thrones", "Geroge RR martin", 10000);
-        Book book2 = new Book("Lord of the rings", "Tolkein", 12000);
+        Book book1 = new Book("Game of thrones", "George RR martin", 15000);
+        Book book2 = new Book("Star wars", "Geroge lucas", 20000);
+        Book book3 = new Book("Lord of the Rings", "Tokein", 12000);
 
         Library library = new Library();
         library.addBook(book1);
         library.addBook(book2);
+        library.addBook(book3);
 
+        library.removeBook("star wars");
         library.displayBooks();
 
-        library.removeBook("lord of the rings");
-        library.removeBook("game of thrones");
-        library.displayBooks();
     }
 }
 
@@ -34,6 +36,7 @@ class Book{
         this.price = price;
     }
 
+    //getter and setter methods
     public String getTitle(){
         return title;
     }
@@ -46,11 +49,11 @@ class Book{
         return price;
     }
 
-    public void setTitle(){
+    public void setTitle(String title){
         this.title = title;
     }
 
-    public void setAuthor(){
+    public void setAuthor(String author){
         this.author = author;
     }
 
@@ -58,46 +61,51 @@ class Book{
         this.price = price;
     }
 
-    public void displayInformation(){
-        System.out.println("Book: "+title +" Author: "+ author+ " Price: $"+ price);
+    public void displayInfromation(){
+        System.out.println("Title: "+ title + " Author: "+ author + " Price: $"+ price);
     }
 }
+
+//library class that holds the list of books
 
 class Library{
     List<Book> books;
 
-    Library(){
+    public Library(){
         books = new ArrayList<>();
     }
 
-    //method to add a book in the library
+    //method to add a book to library
     public void addBook(Book book){
+        System.out.println("Book "+ book.getTitle() + " has been added to library");
         books.add(book);
-        System.out.println("The book "+ book.getTitle() +" has been added to library");
     }
 
     //method to remove a book from library
     public void removeBook(String bookName){
         for (Book book: books){
             if (book.getTitle().equalsIgnoreCase(bookName)){
-                System.out.println("The book " + book.getTitle() + " has been removed");
                 books.remove(book);
                 return;
             }
         }
 
-        System.out.println("The book " + bookName + " is not available! ");
+        System.out.println("Book "+ bookName + " has not been found");
     }
 
-    //fetch all the books from the library
+    //display the books from library
     public void displayBooks(){
-        System.out.println("Available books: ");
         if (books.isEmpty()){
-            System.out.println("The library is empty!");
+            System.out.println("NO books available");
         }else {
             for (Book book: books){
-                book.displayInformation();
+                book.displayInfromation();
             }
         }
     }
 }
+
+//In the above code what are these getter and setter methods?
+//The getter and setter methods are used to access the properties of the classes which are private(access modifiers)
+
+
