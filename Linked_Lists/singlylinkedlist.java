@@ -1,28 +1,29 @@
 package Linked_Lists;
 
-public class singlylinkedlists {
+public class singlylinkedlist {
     public static void main(String[] args) {
-        SLL list = new SLL();
+        SinglyList list = new SinglyList();
+        list.insertFirst(34);
         list.insertFirst(20);
-        list.insertFirst(25);
-        list.insertFirst(10);
-        list.insertLast(100);
-        list.insertLast(150);
+        list.insertLast(56);
+        list.insertLast(21);
+        list.insertLast(20);
 
-        list.display();
+        list.displayList();
     }
 }
 
-class SLL{
+class SinglyList{
     Node head;
     Node tail;
+
     int size;
 
-    public SLL(){
+    public SinglyList(){
         this.size = 0;
     }
 
-    //method to insert at first
+    //insert an element at first index of the list
     public void insertFirst(int value){
         if (tail == null){
             tail = head;
@@ -35,24 +36,30 @@ class SLL{
         size++;
     }
 
-    //method to insert element at last
+    //method to insert an element at last index
     public void insertLast(int value){
-        if (tail == null){
-            insertFirst(value);
-            return;
-        }
+        //here we we need some base cases
+        //when we directly try to insert a tail in an empty list it returns an null pointer exceptions
 
         Node node = new Node(value);
-        tail.next = node;
-        tail = node;
+
+        //so if tail is null make both head and tail both to node
+        //and then start the operations
+        if (tail == null){
+            head = node;
+            tail = node;
+        }else {
+            tail.next = node;
+            tail = node;
+        }
 
         size++;
     }
 
-    //method to insert at specific index
-    public void insertAtSpecificIndex(int value, int index){
-        if (index < 0 || index > size){
-            throw new IndexOutOfBoundsException("Index out of Bound error!");
+    //insert an element at specifc index
+    public void insertAtSpecificIndex(int index, int value){
+        if (index < 0 && index > size){
+            throw new IndexOutOfBoundsException();
         }
 
         if (index == 0){
@@ -66,7 +73,7 @@ class SLL{
         }
 
         Node temp = head;
-        for (int i = 1;i<index;i++){
+        for (int i=1;i<index;i++){
             temp = temp.next;
         }
 
@@ -76,25 +83,19 @@ class SLL{
         size++;
     }
 
-    //method to remove first element
+    //remove the first element from the list
     public int removeFirst(){
-        if (head == null){
-            tail=null;
-        }
-        
         int value = head.value;
         head = head.next;
 
         size--;
-
         return value;
     }
 
-    //method to remove last element
+    //remove the last element in the list
     public int removeLast(){
-        Node curr = head;
-        Node prev = null;
 
+        //first check if there is only single element in the list
         if (head.next == null){
             int value = head.value;
             head = null;
@@ -104,6 +105,10 @@ class SLL{
             return value;
         }
 
+        //else perform the operation to remove last element
+        Node curr = head;
+        Node prev = null;
+
         while (curr.next != null){
             prev = curr;
             curr = curr.next;
@@ -112,43 +117,43 @@ class SLL{
         int value = curr.value;
         prev.next = null;
         tail = prev;
+
         size--;
 
         return value;
     }
 
-    //method to remove an index
+    //remove from specific index
     public int removeIndex(int index){
-
-        if (index < 0 || index >= size){
-            throw new IndexOutOfBoundsException("Index out of Bound error!");
+        if (index < 0 && index > size){
+            throw new IndexOutOfBoundsException();
         }
 
         if (index == 0){
             return removeFirst();
         }
 
-        if (index == size - 1){
+        if (index == size){
             return removeLast();
         }
 
-        Node curr = head;
         Node prev = null;
+        Node curr = head;
 
-        for (int i=0;i<index;i++){
+        for (int i=0;i<=index - 1;i++){
             prev = curr;
             curr = curr.next;
         }
 
         int value = curr.value;
         prev.next = curr.next;
+
         size--;
 
         return value;
     }
 
-    //method to display the list
-    public void display(){
+    public void displayList(){
         Node temp = head;
 
         while (temp != null){
@@ -156,15 +161,16 @@ class SLL{
             temp = temp.next;
         }
 
-        System.out.println("end of the lists");
+        System.out.println("END");
     }
+
 
     private class Node{
         private int value;
         private Node next;
 
         Node(int value, Node next){
-            this.value= value;
+            this.value = value;
             this.next = next;
         }
 
